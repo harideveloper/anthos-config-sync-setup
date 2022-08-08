@@ -1,0 +1,11 @@
+apiVersion: v1
+kind : Secret
+metadata:
+  name : git-creds
+  namespace : config-management-system
+type: Opaque
+data:
+  http_proxy : {{.Values.configsync.gitProxy | b64enc}}
+  https_proxy : {{.Values.configsync.gitProxy | b64enc}}
+  username : {{.Values.configsync.gitUsername | b64enc}}
+  ssh : {{.Values.configsync.gitProxy | b64enc }}

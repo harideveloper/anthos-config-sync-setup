@@ -1,0 +1,12 @@
+output "network" { value = module.vpc.network }
+output "project_id" { value = module.vpc.project_id }
+output "network_name" { value = module.vpc.network_name }
+output "subnets" { value = module.vpc.subnets }
+output "subnets_ips" { value = module.vpc.subnets_ips }
+output "subnets_names" { value = module.vpc.subnets_names }
+output "subnets_regions" { value = module.vpc.subnets_regions }
+output "subnets_secondary_ranges" { value = module.vpc.subnets_secondary_ranges }
+# output "gke_id" { value = data.google_container_cluster.gke.id}
+# output "gke_name" { value = data.google_container_cluster.gke.name}
+# output "cluster_ipv4_cidr" { value = data.google_container_cluster.ip_allocation_policy.cluster_ipv4_cidr_block}
+# output "services_ipv4_cidr" { value = data.google_container_cluster.ip_allocation_policy.services_ipv4_block}

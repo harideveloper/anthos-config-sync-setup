@@ -1,0 +1,16 @@
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: rootsync-db
+  namespace: config-management-system
+spec:
+  sourceFormat: unstructured
+  git:
+   repo: https://github.com/harideveloper/acm-app-policy.git
+     revision: HEAD
+     branch: main
+     dir: "/"
+     auth: token
+     secretRef:
+       name: ROOT_SECRET_NAME
+     noSSLVerify: ROOT_NO_SSL_VERIFY
