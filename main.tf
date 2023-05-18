@@ -60,6 +60,8 @@ data "google_container_cluster" "gke" {
   #   services_ipv4_cidr_block = var.svc1_cidr
   #   services_secondary_range_name = "${var.subnet_name}-svc1-cidr"
   # }
+
+  depends_on = [module.acm-gke-cluster]
 }
 
 
@@ -127,22 +129,22 @@ resource "google_gke_hub_membership" "gke_membership" {
 
 ## Enable Hub 
 
-resource "null_resource" "exec_gke_mesh" {
-  provisioner "local-exec" {
-    interpreter = ["bash", "-exc"]
-    command     = "${path.module}/scripts/mesh.sh"
-    environment = {
-      CLUSTER    = data.google_container_cluster.gke.name
-      LOCATION   = data.google_container_cluster.gke.location
-      PROJECT    = var.project_id
-      KUBECONFIG = var.gke_kubeconfig
-    }
-  }
-  triggers = {
-    build_number = "${timestamp()}"
-    script_sha1  = sha1(file("${path.module}/scripts/mesh.sh")),
-  }
-}
+# resource "null_resource" "exec_gke_mesh" {
+#   provisioner "local-exec" {
+#     interpreter = ["bash", "-exc"]
+#     command     = "${path.module}/scripts/mesh.sh"
+#     environment = {
+#       CLUSTER    = data.google_container_cluster.gke.name
+#       LOCATION   = data.google_container_cluster.gke.location
+#       PROJECT    = var.project_id
+#       KUBECONFIG = var.gke_kubeconfig
+#     }
+#   }
+#   triggers = {
+#     build_number = "${timestamp()}"
+#     script_sha1  = sha1(file("${path.module}/scripts/mesh.sh")),
+#   }
+# }
 
 resource "google_gke_hub_feature" "feature" {
   name = "configmanagement"
@@ -165,9 +167,9 @@ resource "google_gke_hub_feature_membership" "config_sync_feature" {
         sync_repo = var.sync_repo
         sync_branch = var.sync_branch
         policy_dir = var.policy_dir
-        #secret_type = "token"
+        secret_type = "token"
         # secret_type = "none"
-        secret_type = "ssh"
+        # secret_type = "ssh"
       }
     }
   }

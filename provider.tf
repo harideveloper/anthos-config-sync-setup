@@ -15,8 +15,8 @@ terraform {
 
 # Provider
 provider "google" {    
-  project = "sandbox-db-enablers"
+  project = "hariprasad-sundaresan-0202"
 }
 provider "google-beta" { 
-  project = "sandbox-db-enablers"
+  project = "hariprasad-sundaresan-0202"
 }

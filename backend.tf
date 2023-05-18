@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket  = "arm-gcs-test-bucket"
+    bucket  = "acm-gcs-test-bucket"
     prefix  = "terraform/state"
  }
 }

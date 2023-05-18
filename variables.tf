@@ -1,6 +1,6 @@
 variable "project_id" {
   type    = string
-  default = "sandbox-db-enablers"
+  default = "hariprasad-sundaresan-0202"
 }
 
 variable "application" {
@@ -11,7 +11,7 @@ variable "application" {
 ## VPC Module  
 variable "vpc" {
   type    = string
-  default = "acm-vpc-enablers"
+  default = "acm-vpc-demo"
 }
 
 variable "region" {
@@ -52,7 +52,7 @@ variable "gke_cluster_name" {
 
 variable "gke_zone" {
   type    = string
-  default = "europe-west2-a"
+  default = "europe-west2-b"
 }
 
 variable "gke_channel" {
@@ -76,12 +76,12 @@ variable "gke_kubeconfig" {
 
 variable "sync_repo" {
   type    = string
-  default = "https://github.com/harideveloper/acm-root-repo.git"
+  default = "https://github.com/harideveloper/platform-admin.git"
 }
 
 variable "sync_branch" {
   type    = string
-  default = "main"
+  default = "master"
 }
 
 variable "sync_token" {
